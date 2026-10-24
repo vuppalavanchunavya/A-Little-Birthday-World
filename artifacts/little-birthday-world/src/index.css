@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@500;600;700&family=DM+Sans:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,500;9..144,600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@500;600;700&family=DM+Sans:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Fredoka:wght@600;700;800&display=swap');
 @import 'tailwindcss';
 @import 'tw-animate-css';
 @plugin "@tailwindcss/typography";
@@ -106,13 +106,256 @@ button:focus-visible, a:focus-visible { outline: 3px solid #c29847; outline-offs
 .collage { display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;width:min(460px,100%);margin:22px auto; }
 .collage .photo-placeholder{min-height:115px}.collage .photo-placeholder:first-child{grid-row:span 2;min-height:240px}
 .final-copy { white-space:pre-line;max-width:590px;margin:20px auto;line-height:1.8;color:#49647c; }
-.cake { margin:24px auto 12px;width:150px;height:100px;position:relative;cursor:pointer; }
-.cake-body{position:absolute;bottom:0;width:150px;height:62px;background:#9bc1dc;border:2px solid #173b65;border-radius:16px 16px 9px 9px}
-.cake-body:before{content:'';position:absolute;top:18px;left:0;right:0;border-top:3px dotted #fffdf8}
-.candle{position:absolute;bottom:60px;width:10px;height:38px;background:#fff1d1;border:1px solid #173b65;border-radius:4px 4px 0 0}
-.candle:nth-child(1){left:37px}.candle:nth-child(2){left:70px;height:46px}.candle:nth-child(3){left:103px}
-.flame{position:absolute;top:-17px;left:1px;width:7px;height:12px;background:#e4ae55;border-radius:50% 50% 45% 45%;animation:flicker 1s infinite alternate}
-.candle.out .flame{display:none}
+/* =======================================================
+   INTERACTIVE BIRTHDAY CAKE & CANDLE BLOWING STYLES
+   ======================================================= */
+.cake-stage {
+  width: min(520px, 100%);
+  margin: 18px auto 0;
+  text-align: center;
+  position: relative;
+}
+
+.cake-stage-companion {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  background: #fff8f0;
+  border: 2px solid #ffccd5;
+  border-radius: 20px;
+  padding: 12px 18px;
+  max-width: 440px;
+  margin: 12px auto 16px;
+  box-shadow: 0 6px 18px rgba(217, 4, 41, 0.08);
+}
+
+.cake-shinchan-avatar {
+  width: 68px;
+  height: 68px;
+  min-width: 68px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 3px solid #ff4d6d;
+  box-shadow: 0 4px 12px rgba(217, 4, 41, 0.2);
+  background: #ffffff;
+}
+
+.cake-shinchan-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.cake-speech-bubble {
+  text-align: left;
+  flex: 1;
+}
+
+.cake-speech-speaker {
+  font-family: 'Fredoka', cursive, sans-serif;
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: #d90429;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  display: block;
+}
+
+.cake-speech-bubble p {
+  margin: 2px 0 0;
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: #173b65;
+  line-height: 1.35;
+}
+
+.cake-card {
+  background: radial-gradient(circle at 50% 30%, #fffcf5 0%, #fff6ea 100%);
+  border: 2px solid #ffccd5;
+  border-radius: 24px;
+  padding: 16px 16px 22px;
+  box-shadow: 0 12px 36px rgba(23, 59, 101, 0.09), 0 0 0 4px rgba(255, 204, 213, 0.3);
+  position: relative;
+  overflow: hidden;
+}
+
+.cake-svg-wrapper {
+  position: relative;
+  width: min(340px, 92vw);
+  margin: 0 auto;
+}
+
+.cake-svg {
+  width: 100%;
+  height: auto;
+  display: block;
+  filter: drop-shadow(0 10px 18px rgba(23, 59, 101, 0.12));
+}
+
+/* Candle Animations */
+.candle-interactive {
+  cursor: pointer;
+  outline: none;
+  transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.candle-interactive:hover {
+  transform: translateY(-3px) scale(1.04);
+}
+
+.flame-halo {
+  animation: pulseHalo 1.6s ease-in-out infinite alternate;
+  transform-origin: center;
+}
+
+.candle-flame {
+  animation: flickerFlame 0.9s ease-in-out infinite alternate;
+  transform-origin: bottom center;
+}
+
+.inner-flame {
+  animation: flickerInner 0.6s ease-in-out infinite alternate;
+  transform-origin: bottom center;
+}
+
+.candle-smoke {
+  animation: smokeRise 2.2s ease-out infinite;
+  opacity: 0.8;
+  transform-origin: bottom center;
+}
+
+.candle-ember {
+  animation: emberGlow 1.2s ease-in-out infinite alternate;
+}
+
+.wind-puff-overlay {
+  animation: windBlow 0.4s ease-out forwards;
+}
+
+/* Action Buttons */
+.cake-actions-row {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  margin-top: 14px;
+}
+
+.btn-cake-action {
+  font-family: 'Fredoka', cursive, sans-serif;
+  font-size: clamp(1.05rem, 3vw, 1.25rem);
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  padding: 12px 34px;
+  border-radius: 999px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  transition: all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+  text-transform: uppercase;
+}
+
+.btn-blow {
+  background: linear-gradient(180deg, #ff4d6d 0%, #d90429 100%);
+  color: #ffffff !important;
+  border: 3px solid #ffffff;
+  box-shadow: 0 8px 24px rgba(217, 4, 41, 0.38), 0 0 0 3px #d90429;
+}
+
+.btn-blow:hover {
+  transform: scale(1.06) translateY(-2px);
+  box-shadow: 0 12px 30px rgba(217, 4, 41, 0.5), 0 0 0 4px #ff4d6d;
+}
+
+.btn-blow:active {
+  transform: scale(0.96);
+}
+
+.btn-relight {
+  background: linear-gradient(180deg, #3a86ff 0%, #1d4ed8 100%);
+  color: #ffffff !important;
+  border: 3px solid #ffffff;
+  box-shadow: 0 8px 24px rgba(29, 78, 216, 0.35), 0 0 0 3px #1d4ed8;
+}
+
+.btn-relight:hover {
+  transform: scale(1.06) translateY(-2px);
+  box-shadow: 0 12px 30px rgba(29, 78, 216, 0.5), 0 0 0 4px #3a86ff;
+}
+
+.cake-hint-text {
+  font-size: 0.82rem;
+  color: #64748b;
+  font-weight: 500;
+  margin: 6px 0 0;
+}
+
+.wish-sent-card {
+  margin-top: 14px;
+  background: #ffffff;
+  border: 2px dashed #ffb3c1;
+  border-radius: 16px;
+  padding: 12px 18px;
+  box-shadow: 0 6px 16px rgba(217, 4, 41, 0.08);
+  animation: popIn 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.wish-sent-title {
+  font-family: 'Fredoka', cursive, sans-serif;
+  color: #d90429;
+  font-size: 1.15rem;
+  font-weight: 800;
+  margin: 0 0 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+
+.wish-sent-copy {
+  margin: 0;
+  color: #173b65;
+  font-size: 0.94rem;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+@keyframes pulseHalo {
+  0% { transform: scale(0.9); opacity: 0.6; }
+  100% { transform: scale(1.15); opacity: 0.95; }
+}
+
+@keyframes flickerFlame {
+  0% { transform: rotate(-3deg) scaleY(0.94); }
+  50% { transform: rotate(1deg) scaleY(1.04) scaleX(0.96); }
+  100% { transform: rotate(3deg) scaleY(0.96); }
+}
+
+@keyframes flickerInner {
+  0% { transform: scale(0.92); }
+  100% { transform: scale(1.08); }
+}
+
+@keyframes smokeRise {
+  0% { stroke-dashoffset: 0; opacity: 0.85; transform: translateY(0) scaleX(1); }
+  50% { opacity: 0.6; transform: translateY(-10px) scaleX(1.2); }
+  100% { stroke-dashoffset: -20; opacity: 0; transform: translateY(-24px) scaleX(1.4); }
+}
+
+@keyframes emberGlow {
+  0% { opacity: 0.6; transform: scale(0.8); }
+  100% { opacity: 1; transform: scale(1.3); }
+}
+
+@keyframes windBlow {
+  0% { opacity: 0; transform: translateX(-40px); }
+  40% { opacity: 1; }
+  100% { opacity: 0; transform: translateX(50px); }
+}
 .status-pill{display:inline-flex;align-items:center;gap:7px;border-radius:999px;padding:7px 12px;background:#e5f0f6;color:#315c7a;font-size:.75rem;font-weight:700}
 .modal-backdrop{position:fixed;inset:0;background:rgba(18,39,60,.76);z-index:20;display:grid;place-items:center;padding:20px}
 .photo-modal{width:min(700px,100%);background:#fbf8f0;padding:18px;border-radius:16px;position:relative;text-align:center;box-shadow:0 22px 70px #102c4b66}
@@ -130,3 +373,704 @@ button:focus-visible, a:focus-visible { outline: 3px solid #c29847; outline-offs
 @media(max-width:700px){.content{padding-top:16px}.topbar{padding-top:13px}.top-action{padding:0 11px;font-size:.76rem}.top-action span{display:none}.hero-card{padding:32px 22px}.gift-grid{grid-template-columns:1fr;gap:12px;max-width:460px}.gift-choice{min-height:auto;display:flex;align-items:center;text-align:left;gap:17px;padding:15px}.gift-art{width:70px;height:70px;min-width:70px;margin:0}.gift-choice h3{margin:0}.gift-choice p{margin-top:2px}.letter-layout{grid-template-columns:1fr}.envelope-scene{min-height:220px}.album{grid-template-columns:1fr;padding:12px;gap:12px}.album-page{min-height:unset;padding:18px}.photo-placeholder{min-height:115px}.album-page.right-page .photo-placeholder{min-height:150px}.journey-nav{margin-bottom:8px}.countdown{gap:6px}.time-unit{min-width:64px;padding:10px 6px}.time-unit strong{font-size:1.45rem}.time-unit span{font-size:.59rem}.final-card{padding:25px 19px}.collage{gap:7px}.collage .photo-placeholder{min-height:90px}.collage .photo-placeholder:first-child{min-height:187px}}
 @media(max-width:700px){.photo-meta{max-width:calc(100% - 100px);font-size:.74rem}}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
+
+/* =======================================================
+   SHIN-CHAN BIRTHDAY THEME & GINGHAM STYLES
+   ======================================================= */
+.font-bouncy {
+  font-family: 'Fredoka', cursive, sans-serif;
+}
+
+/* Red & white checkered gingham border (Canva viral birthday reel aesthetic) */
+.gingham-border {
+  background-color: #ffffff;
+  background-image: 
+    linear-gradient(90deg, rgba(229, 56, 59, 0.36) 50%, transparent 50%),
+    linear-gradient(rgba(229, 56, 59, 0.36) 50%, transparent 50%);
+  background-size: 24px 24px;
+  padding: clamp(14px, 3.5vw, 24px);
+  border-radius: 28px;
+  border: 4px solid #d90429;
+  box-shadow: 0 20px 48px rgba(217, 4, 41, 0.22), 0 6px 14px rgba(0, 0, 0, 0.08);
+  width: min(650px, 100%);
+  margin: 0 auto;
+  position: relative;
+  overflow: hidden;
+  animation: popIn 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.gingham-inner-card {
+  background: #fffdf9;
+  border-radius: 20px;
+  padding: clamp(24px, 5vw, 42px) clamp(18px, 4vw, 32px);
+  text-align: center;
+  position: relative;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.05);
+  border: 2px solid #ffccd5;
+}
+
+/* "HOW DARE YOU!?" Screen */
+.dare-title {
+  font-family: 'Fredoka', cursive, sans-serif;
+  font-size: clamp(2.6rem, 7vw, 4.4rem);
+  font-weight: 800;
+  color: #d90429;
+  letter-spacing: 0.04em;
+  margin: 0 auto 12px;
+  line-height: 1.05;
+  text-transform: uppercase;
+  text-shadow: 3px 3px 0px #ffe5ec, -1px -1px 0px #ffffff;
+  animation: dareWobble 1.2s ease-in-out infinite alternate;
+}
+
+.dare-shinchan-frame {
+  width: min(280px, 75vw);
+  height: min(280px, 75vw);
+  margin: 8px auto 18px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.dare-shinchan-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  mix-blend-mode: multiply;
+  animation: shinchanHeadstand 2.4s ease-in-out infinite;
+}
+
+.btn-try-again {
+  background: linear-gradient(180deg, #ef233c 0%, #d90429 100%);
+  color: #ffffff !important;
+  font-family: 'Fredoka', sans-serif;
+  font-size: clamp(1.15rem, 3.2vw, 1.35rem);
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  padding: 13px 46px;
+  border-radius: 999px;
+  border: 3px solid #ffffff;
+  box-shadow: 0 8px 24px rgba(217, 4, 41, 0.45), 0 0 0 3px #d90429;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  text-transform: uppercase;
+  transition: all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+  margin-top: 10px;
+}
+
+.btn-try-again:hover {
+  transform: scale(1.08) translateY(-3px);
+  box-shadow: 0 14px 34px rgba(217, 4, 41, 0.6), 0 0 0 4px #ef233c;
+  background: linear-gradient(180deg, #ff4d6d 0%, #ef233c 100%);
+}
+
+.btn-try-again:active {
+  transform: scale(0.96);
+}
+
+/* Shinchan Hero Character Card Display */
+.shinchan-hero-art {
+  width: min(260px, 68vw);
+  height: min(260px, 68vw);
+  margin: 18px auto 14px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.shinchan-hero-art img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  mix-blend-mode: multiply;
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.shinchan-hero-art:hover img {
+  transform: scale(1.05) rotate(2deg);
+}
+
+.shinchan-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: #fff0f3;
+  color: #d90429;
+  border: 1.5px solid #ffb3c1;
+  font-size: 0.78rem;
+  font-weight: 700;
+  padding: 5px 14px;
+  border-radius: 999px;
+  margin-bottom: 10px;
+  letter-spacing: 0.04em;
+  font-family: 'Fredoka', cursive, sans-serif;
+}
+
+/* Gift Choice Cards with Shinchan Thumbnails */
+.gift-shinchan-thumb {
+  width: 96px;
+  height: 96px;
+  margin: 0 auto 14px;
+  border-radius: 50%;
+  background: #ffffff;
+  border: 3px solid #ffccd5;
+  box-shadow: 0 8px 20px rgba(217, 4, 41, 0.12);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), border-color 0.2s;
+}
+
+.gift-shinchan-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.gift-choice:hover .gift-shinchan-thumb {
+  transform: scale(1.1) rotate(3deg);
+  border-color: #ef233c;
+  box-shadow: 0 12px 28px rgba(217, 4, 41, 0.22);
+}
+
+.gift-choice:hover .gift-shinchan-thumb img {
+  transform: scale(1.1);
+}
+
+/* Letter Shinchan Decoration */
+.letter-shinchan-badge {
+  width: 120px;
+  height: 120px;
+  margin: 0 auto 12px;
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 8px 20px rgba(23, 59, 101, 0.12);
+  border: 3px solid #fffdf8;
+}
+
+.letter-shinchan-badge img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Scrapbook header decal */
+.scrapbook-decal {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.scrapbook-shinchan-mini {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 2px solid #e5383b;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.scrapbook-shinchan-mini img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Sound toggle pill */
+.sound-toggle-btn {
+  border: 1px solid #c5d3df;
+  border-radius: 999px;
+  background: #fffdf8;
+  color: #173b65;
+  min-height: 42px;
+  padding: 0 14px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: .83rem;
+  transition: all 0.2s ease;
+}
+
+.sound-toggle-btn:hover {
+  background: #ffe5ec;
+  border-color: #ffccd5;
+  color: #d90429;
+}
+
+/* Animations */
+@keyframes dareWobble {
+  0% { transform: rotate(-3deg) scale(0.98); }
+  100% { transform: rotate(3deg) scale(1.02); }
+}
+
+@keyframes shinchanHeadstand {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-9px) rotate(-3.5deg); }
+}
+
+@keyframes popIn {
+  from { opacity: 0; transform: scale(0.85); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes gentleFloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-7px); }
+}
+
+/* =======================================================
+   BIRTHDAY SONG PLAYER ("Happy Birthday To You Ji")
+   ======================================================= */
+.birthday-song-card {
+  margin-top: 14px;
+  background: linear-gradient(135deg, #fff0f3 0%, #fff8f0 100%);
+  border: 2px solid #ffccd5;
+  border-radius: 18px;
+  padding: 12px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  box-shadow: 0 8px 24px rgba(217, 4, 41, 0.12);
+  animation: popIn 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.song-badge-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-align: left;
+  flex: 1;
+}
+
+.song-disc {
+  width: 44px;
+  height: 44px;
+  min-width: 44px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #ef233c 0%, #d90429 100%);
+  color: #ffffff;
+  display: grid;
+  place-items: center;
+  box-shadow: 0 4px 12px rgba(217, 4, 41, 0.3);
+  border: 2px solid #ffffff;
+}
+
+.song-disc.spinning {
+  animation: rotateDisc 3s linear infinite;
+}
+
+.song-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.song-title-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.song-name {
+  font-family: 'Fredoka', cursive, sans-serif;
+  font-size: 0.98rem;
+  font-weight: 700;
+  color: #d90429;
+  letter-spacing: 0.02em;
+}
+
+.song-live-pill {
+  font-size: 0.65rem;
+  font-weight: 800;
+  background: #d90429;
+  color: #ffffff;
+  padding: 2px 7px;
+  border-radius: 999px;
+  letter-spacing: 0.06em;
+  animation: pulsePill 1.2s infinite alternate;
+}
+
+.song-artist {
+  font-size: 0.78rem;
+  color: #49647c;
+  font-weight: 600;
+}
+
+.song-control-btn {
+  background: #ffffff;
+  color: #d90429;
+  border: 2px solid #ffccd5;
+  border-radius: 999px;
+  padding: 8px 16px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: 'Fredoka', cursive, sans-serif;
+  font-size: 0.88rem;
+  font-weight: 700;
+  transition: all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  white-space: nowrap;
+}
+
+.song-control-btn:hover {
+  background: #ffccd5;
+  color: #b7094c;
+  transform: scale(1.06);
+}
+
+@keyframes rotateDisc {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes pulsePill {
+  0% { opacity: 0.75; transform: scale(0.96); }
+  100% { opacity: 1; transform: scale(1.04); }
+}
+
+/* =======================================================
+   6-DAY BIRTHDAY CALENDAR & GIFT HUB STYLES
+   ======================================================= */
+.gifts-progress-bar {
+  width: min(520px, 100%);
+  margin: 10px auto 22px;
+  background: #ffffff;
+  border: 2px solid #ffccd5;
+  border-radius: 999px;
+  padding: 4px;
+  box-shadow: 0 4px 12px rgba(217, 4, 41, 0.08);
+}
+
+.gifts-progress-fill {
+  height: 12px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #ff758f 0%, #d90429 100%);
+  transition: width 0.4s ease;
+}
+
+.gift-grid-6 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 18px;
+  width: min(920px, 100%);
+  margin: 0 auto;
+}
+
+.gift-card-6 {
+  background: #ffffff;
+  border: 2px solid #e2e8f0;
+  border-radius: 22px;
+  padding: 22px 18px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: all 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.04);
+}
+
+.gift-card-6.unlocked {
+  border-color: #ffccd5;
+  cursor: pointer;
+}
+
+.gift-card-6.unlocked:hover {
+  transform: translateY(-5px) scale(1.02);
+  border-color: #ef233c;
+  box-shadow: 0 14px 32px rgba(217, 4, 41, 0.16);
+}
+
+.gift-card-6.locked {
+  background: linear-gradient(180deg, #ffffff 0%, #fdfbfc 100%);
+  border: 2px dashed #cbd5e1;
+  opacity: 0.94;
+  cursor: pointer;
+  position: relative;
+}
+
+.gift-card-6.locked:hover {
+  transform: translateY(-4px);
+  border-color: #f43f5e;
+  border-style: solid;
+  box-shadow: 0 10px 24px rgba(244, 63, 94, 0.12);
+}
+
+.mystery-gift-box {
+  width: 88px;
+  height: 88px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+}
+
+.mystery-lock-icon {
+  transform-origin: 8px 6px;
+  transition: transform 0.25s ease;
+}
+
+.gift-card-6.locked:hover .mystery-lock-icon {
+  animation: lock-wiggle 0.35s ease-in-out infinite alternate;
+}
+
+@keyframes lock-wiggle {
+  0% { transform: translate(36px, 44px) rotate(-8deg); }
+  100% { transform: translate(36px, 44px) rotate(8deg); }
+}
+
+.gift-day-badge {
+  font-family: 'Fredoka', cursive, sans-serif;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  padding: 4px 12px;
+  border-radius: 999px;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.gift-day-badge.badge-unlocked {
+  background: #fff0f3;
+  color: #d90429;
+  border: 1.5px solid #ffccd5;
+}
+
+.gift-day-badge.badge-locked {
+  background: #f1f5f9;
+  color: #64748b;
+  border: 1.5px solid #cbd5e1;
+}
+
+.gift-day-badge.badge-grand {
+  background: linear-gradient(90deg, #ff758f 0%, #d90429 100%);
+  color: #ffffff;
+  border: 1.5px solid #ffffff;
+  box-shadow: 0 4px 10px rgba(217, 4, 41, 0.25);
+}
+
+.gift-card-status-pill {
+  margin-top: auto;
+  font-size: 0.76rem;
+  font-weight: 700;
+  padding: 6px 14px;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.gift-card-status-pill.status-open {
+  background: #e6f4ea;
+  color: #137333;
+  border: 1px solid #ceead6;
+}
+
+.gift-card-status-pill.status-locked {
+  background: #f8fafc;
+  color: #64748b;
+  border: 1px solid #e2e8f0;
+}
+
+/* Locked Modal Overlay */
+.lock-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(18, 39, 60, 0.78);
+  backdrop-filter: blur(4px);
+  z-index: 50;
+  display: grid;
+  place-items: center;
+  padding: 20px;
+}
+
+.lock-modal-card {
+  width: min(440px, 100%);
+  background: #ffffff;
+  border: 3px solid #ff4d6d;
+  border-radius: 24px;
+  padding: 28px 20px 22px;
+  text-align: center;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.25);
+  animation: popIn 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+  position: relative;
+}
+
+/* Day 1: Reasons Cards */
+.reasons-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 16px;
+  width: min(860px, 100%);
+  margin: 20px auto 0;
+}
+
+.reason-card {
+  background: #ffffff;
+  border: 2px solid #ffccd5;
+  border-radius: 18px;
+  padding: 18px;
+  text-align: left;
+  box-shadow: 0 6px 16px rgba(217, 4, 41, 0.06);
+  transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.reason-card:hover {
+  transform: translateY(-3px);
+  border-color: #ef233c;
+  box-shadow: 0 10px 24px rgba(217, 4, 41, 0.12);
+}
+
+.voucher-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 14px;
+  width: min(860px, 100%);
+  margin: 18px auto 0;
+}
+
+.voucher-card {
+  background: #fffcf5;
+  border: 2px dashed #f59e0b;
+  border-radius: 16px;
+  padding: 16px;
+  text-align: center;
+  position: relative;
+  transition: all 0.2s ease;
+}
+
+.voucher-card.redeemed {
+  background: #f0fdf4;
+  border-color: #22c55e;
+  border-style: solid;
+}
+
+/* Day 3: Trivia Quiz */
+.trivia-container {
+  width: min(580px, 100%);
+  margin: 20px auto 0;
+  background: #ffffff;
+  border: 2px solid #ffccd5;
+  border-radius: 22px;
+  padding: 24px 20px;
+  box-shadow: 0 10px 30px rgba(23, 59, 101, 0.08);
+}
+
+.trivia-option-btn {
+  width: 100%;
+  text-align: left;
+  background: #f8fafc;
+  border: 2px solid #e2e8f0;
+  border-radius: 14px;
+  padding: 14px 18px;
+  font-size: 0.98rem;
+  font-weight: 600;
+  color: #173b65;
+  cursor: pointer;
+  margin-bottom: 10px;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.trivia-option-btn:hover {
+  background: #fff0f3;
+  border-color: #ffccd5;
+  color: #d90429;
+  transform: translateX(4px);
+}
+
+.trivia-option-btn.selected {
+  background: #ffe5ec;
+  border-color: #ef233c;
+  color: #d90429;
+}
+
+/* Day 5: Promises */
+.promise-list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  width: min(640px, 100%);
+  margin: 20px auto 0;
+}
+
+.promise-card {
+  background: #ffffff;
+  border: 2px solid #fde047;
+  border-radius: 18px;
+  padding: 18px 20px;
+  text-align: left;
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  box-shadow: 0 6px 18px rgba(202, 138, 4, 0.08);
+}
+
+.promise-num {
+  font-family: 'Fredoka', cursive, sans-serif;
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: #eab308;
+  line-height: 1;
+}
+
+/* Dev Date Switcher */
+.dev-date-bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  flex-wrap: wrap;
+  margin: 14px auto 0;
+  padding: 8px 12px;
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid #cbd5e1;
+  border-radius: 999px;
+  width: fit-content;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.05);
+}
+
+.dev-date-btn {
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 999px;
+  border: 1px solid #cbd5e1;
+  background: #ffffff;
+  color: #475569;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.dev-date-btn:hover {
+  background: #ffe5ec;
+  border-color: #ff4d6d;
+  color: #d90429;
+}
+
+.dev-date-btn.active {
+  background: #d90429;
+  color: #ffffff;
+  border-color: #d90429;
+}
+
