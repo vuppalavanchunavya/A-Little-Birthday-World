@@ -1,0 +1,521 @@
+# Product Requirements Document (PRD)
+# An Interactive Birthday Surprise Website for My Sister
+
+**Project:** A Little Birthday World  
+**Birthday:** 30 October 2026  
+**Experience type:** Interactive, personalized birthday website  
+**Platform:** Mobile-first responsive web application  
+**Primary objective:** Create a delightful, emotional, playful birthday experience inspired by the supplied Instagram Reel.
+
+## 1. Product Vision
+
+Build a personalized birthday website that feels like opening a handmade digital gift. Instead of scrolling through a conventional webpage, the birthday girl should interact with the experience, make choices, unlock surprises, explore memories, and discover a heartfelt letter.
+
+The experience should combine:
+- A cute, playful birthday aesthetic.
+- A blue-and-white scrapbook and stationery theme.
+- Interactive yes/no choices and gift selection.
+- A personal photo album and letter.
+- Smooth animations and delightful micro-interactions.
+- A birthday-specific reveal on 30 October 2026.
+
+The website should feel carefully designed, emotionally meaningful, and polished enough to be shared as a special gift.
+
+## 2. Reference Design Analysis
+
+Use the supplied screen recording as the primary visual reference.
+
+### Visual characteristics to reproduce
+
+- A light cream or white background with small blue polka dots.
+- Navy-blue decorative borders, ribbons, bows, stars, and cute illustrations.
+- Handwritten-style headings paired with readable body text.
+- Illustrated envelopes, gift boxes, gems, cakes, and flowers.
+- Scrapbook-style photographs arranged at different angles.
+- Interactive choices that lead to different screens.
+- A letter displayed alongside a collage of photographs.
+
+Use these characteristics as the design direction, while creating an original, polished website rather than copying the Reel frame for frame.
+
+### Improvements over the reference
+
+The finished website should:
+- Fit modern mobile screens without requiring awkward zooming.
+- Use larger, more accessible interaction targets.
+- Have smoother transitions and consistent spacing.
+- Load quickly and avoid unnecessary animation effects.
+- Make every gift choice meaningful and functional.
+- Use actual photographs and personalized messages rather than generic placeholders.
+- Include a coherent beginning, middle, and emotional ending.
+
+## 3. Target User and Context
+
+**Primary user:** My sister, who will receive the birthday website link.
+
+**Sharing method:** WhatsApp, Instagram, or a direct website URL.
+
+**Primary device:** Mobile phone.
+
+**Secondary devices:** Tablet and desktop.
+
+No account, login, registration, or app installation should be required.
+
+## 4. Complete User Experience
+
+### Screen 1 — The Birthday Invitation
+
+Create a charming, full-screen welcome page.
+
+**Visual design**
+- Cream background with tiny blue polka dots.
+- A centered illustrated birthday card or gift box.
+- Small floating stars, bows, and hearts.
+- A subtle animated sparkle effect.
+- Handwritten-style text.
+
+**Suggested content**
+
+"Hey, someone very special has a little surprise waiting for her… 💙"
+
+Below it, display:
+
+"Are you ready to open your birthday surprise?"
+
+Buttons:
+- **YES, SHOW ME! 💝**
+- **NOT YET 🙈**
+
+**Interaction**
+- Clicking the affirmative option triggers a gentle transition into the next screen.
+- Clicking "Not Yet" produces a playful, affectionate response and lets her try again.
+- Keep the interaction lighthearted rather than making the user feel blocked or frustrated.
+- The invitation should respond smoothly to taps.
+
+### Screen 2 — The Birthday Countdown and Reveal
+
+This screen must respond to the date automatically.
+
+**Before 30 October 2026**
+- Display an animated countdown to the birthday.
+- Show a cute illustration of a wrapped gift or birthday cake.
+- Display: "Something special is waiting for you…"
+- Include a button to continue exploring the available surprises.
+
+**On 30 October 2026**
+- Replace the countdown with a celebratory reveal.
+- Display "IT'S YOUR BIRTHDAY! 🎂"
+- Reveal her name with an animated text effect.
+- Trigger confetti, floating balloons, and gentle sparkles.
+- Play optional birthday music after user interaction.
+
+**After 30 October 2026**
+- Show the birthday celebration by default.
+- Never show a negative countdown.
+- Keep all gifts, photographs, and messages accessible.
+
+Use the `Asia/Kolkata` timezone. The birthday begins at 00:00 on 30 October 2026 in India Standard Time.
+
+The countdown must calculate time dynamically, not rely on hardcoded values.
+
+### Screen 3 — "Accept Your Gifts?"
+
+Create the playful interaction shown in the reference.
+
+**Design**
+- A centered blue-and-white illustrated card.
+- A cute character or animated birthday illustration.
+- The heading: "Accept Your Gifts? 🎁"
+- Two large buttons: YES and NO.
+
+**YES interaction**
+- Animate the card opening.
+- Trigger sparkles and a small burst of confetti.
+- Transition to the gift-selection screen.
+
+**NO interaction**
+- Show a playful message such as "Hehe, try again! Your surprises are waiting 💙"
+- Animate the illustration or gently shake the card.
+- Allow another attempt.
+
+The interaction should remain fun and affectionate. Provide accessible buttons and avoid an endless or frustrating interaction loop.
+
+### Screen 4 — Choose Your Gift
+
+Create an interactive gift-selection screen.
+
+Heading: **"Yay! Choose Your Gift!"**
+
+Display three illustrated gift objects in a scrapbook layout.
+
+**Gift 1: The Envelope 💌**
+
+Represents a heartfelt letter from me to my sister.
+
+On clicking:
+- Animate the envelope opening.
+- Reveal a personal letter.
+- Display a handwritten-style heading.
+- Allow the user to return to the gift-selection screen.
+
+**Gift 2: The Diamond 💎**
+
+Represents the memories and special moments we share.
+
+On clicking:
+- Animate the diamond sparkling.
+- Reveal a photo album or scrapbook.
+- Show photographs with personalized captions.
+- Allow the user to navigate through the memories.
+
+**Gift 3: The Wrapped Present 🎁**
+
+Represents the final surprise.
+
+On clicking:
+- Animate the gift box opening.
+- Reveal a personalized birthday message, a special photo collage, and the final surprise.
+- Trigger a celebratory animation.
+- Provide a way to revisit the other gifts.
+
+Each gift must lead to a distinct experience. Do not create decorative buttons that have no functionality.
+
+The user should be able to explore the gifts in any order without losing progress.
+
+## 5. Gift Experience A — The Personal Letter
+
+Create a digital letter inspired by the reference's open-envelope and stationery design.
+
+### Visual design
+
+- Cream stationery with blue decorative details.
+- A navy-blue ribbon or envelope seal.
+- A handwritten-style title.
+- Subtle paper texture or shadow.
+- A small decorative illustration in the corner.
+
+### Interaction
+
+1. Display a closed envelope.
+2. The user taps the envelope.
+3. Animate the envelope opening.
+4. Reveal the letter with a smooth text animation.
+5. Allow the user to read the complete message without waiting for a slow animation.
+
+### Content
+
+Start with a placeholder:
+
+"To my favorite human,
+
+Happy Birthday! 💙
+
+No matter how much we fight, laugh, annoy each other, or go through together, you'll always be someone incredibly special to me.
+
+I'm so lucky to have you as my sister. I hope this new year of your life brings you happiness, beautiful memories, endless laughter, and everything your heart wishes for.
+
+No website could ever fit all the love I have for you, but I wanted to make this little corner of the internet just for you.
+
+Happy Birthday, my forever person. ❤️"
+
+This message must be editable and replaceable with my own words.
+
+Include a "Back to Your Gifts" control.
+
+## 6. Gift Experience B — Our Memory Scrapbook
+
+Build a visually rich, interactive photo album inspired by the recording.
+
+### Layout
+
+Create a two-page scrapbook layout on larger screens and a comfortable, vertically scrollable layout on mobile.
+
+**Left page**
+- A decorative heading such as "Our Little World".
+- A collection of photographs arranged like physical prints.
+- Blue washi tape, paper clips, small doodles, and hand-drawn stars.
+- Captions beneath selected photographs.
+
+**Right page**
+- A personal message or short story.
+- Additional photographs pinned at different angles.
+- Small decorative illustrations and dates, when provided.
+
+### Interaction
+
+- Tap a photo to enlarge it.
+- Allow navigation between photographs.
+- Provide a close button to return to the scrapbook.
+- Add subtle page-turn transitions.
+- Allow users to return to the gift-selection screen.
+
+### Photo requirements
+
+Create an easy-to-edit photo configuration.
+
+Each photograph should support:
+- Image path.
+- Optional caption.
+- Optional date.
+- Optional short memory description.
+
+Use placeholders during development. Do not invent actual family memories or present stock images as real photographs of us.
+
+The finished scrapbook must be easy to personalize by replacing the images and captions.
+
+## 7. Gift Experience C — The Final Surprise
+
+This should be the most emotionally memorable part of the website.
+
+### Opening animation
+
+- Show a closed illustrated gift box.
+- Ask: "Ready for your final surprise?"
+- On tapping, animate the lid opening.
+- Reveal a photo collage with confetti and glowing stars.
+
+### Final birthday message
+
+Use an editable message such as:
+
+"Happy Birthday to the girl who makes life a little more beautiful just by being in it. 💙
+
+You're not just my sister; you're a part of my world that I will always cherish.
+
+I hope you smile a little more today, feel a little more loved, and remember how special you are—not just on your birthday, but every single day.
+
+This little website is just a small reminder of how much you mean to me.
+
+Love you always. Happy Birthday! 🎂❤️"
+
+### Closing interactions
+
+Include:
+- A "Replay My Surprise" button.
+- A "Back to Your Gifts" button.
+- An optional button to open the photo gallery again.
+
+The ending should feel like the conclusion of a journey rather than another ordinary website section.
+
+## 8. Optional Birthday-Day Extras
+
+Add these features if they improve the overall experience without making the website unnecessarily complicated.
+
+### Birthday music
+- Optional background music.
+- User-controlled play and pause.
+- Start playback only after a user gesture.
+- Use an audio file that is licensed or otherwise permitted for use.
+
+### Interactive birthday cake
+- Display an animated cake with candles.
+- Ask the user to make a wish.
+- Let her tap to extinguish the candles.
+- Trigger a confetti effect and display a birthday wish.
+
+Microphone access must remain optional.
+
+### Photo montage
+- Display selected photographs with gentle transitions.
+- Keep controls available to pause or navigate.
+- Ensure photographs remain visible long enough to appreciate.
+
+## 9. Date-Based Experience Logic
+
+Use a centralized date configuration.
+
+```ts
+export const birthdayConfig = {
+  name: "YOUR_SISTER_NAME",
+  birthday: "2026-10-30",
+  timezone: "Asia/Kolkata",
+};
+```
+
+Implement the following states:
+
+| Date in India | Experience |
+|---|---|
+| Before 30 October 2026 | Countdown and accessible preview |
+| From 30 October 2026 | Birthday celebration and all gifts unlocked |
+| After 30 October 2026 | Full birthday experience remains available |
+
+The date logic must:
+- Use the actual current time.
+- Respect India Standard Time.
+- Update automatically without redeployment.
+- Work after page refresh or reopening.
+- Avoid negative countdowns.
+- Allow the complete experience to be tested using simulated dates during development.
+
+## 10. Design System
+
+### Color palette
+
+- Background: `#FFFDF8`
+- Primary navy: `#173B65`
+- Light blue: `#D9EAF7`
+- Accent blue: `#6CA6D9`
+- Soft cream: `#F8F0DF`
+- Highlight gold: `#E9C779`
+- Body text: `#334155`
+
+Use blue and cream as the dominant colors. Reserve gold and pink for small decorative accents.
+
+### Typography
+
+- Headings: A playful handwritten font such as Caveat.
+- Body: A readable font such as Inter or Nunito.
+- Personal letters: A restrained handwritten-style font for headings, with readable body text.
+
+### Reusable design elements
+
+Create reusable components for:
+- Polka-dot backgrounds.
+- Scrapbook paper.
+- Illustrated gift cards.
+- Buttons and hover/tap states.
+- Photo frames.
+- Decorative ribbons and stickers.
+- Confetti.
+- Transition animations.
+- Navigation controls.
+
+The visual style must be consistent across all screens.
+
+## 11. Technical Requirements
+
+### Preferred technology stack
+
+- React with Vite.
+- TypeScript.
+- Tailwind CSS.
+- Framer Motion for transitions.
+- CSS animations for lightweight decorative effects.
+- Lucide React for functional icons, supplemented by original illustrations where appropriate.
+
+Use custom CSS and SVG illustrations for the cake, envelope, gift box, and decorative elements when this creates a more cohesive visual style.
+
+### Suggested structure
+
+```text
+src/
+  components/
+    WelcomeScreen.tsx
+    BirthdayCountdown.tsx
+    BirthdayReveal.tsx
+    GiftAcceptance.tsx
+    GiftSelection.tsx
+    LetterGift.tsx
+    MemoryScrapbook.tsx
+    FinalGift.tsx
+    BirthdayCake.tsx
+    MusicController.tsx
+    ConfettiEffect.tsx
+    NavigationControls.tsx
+
+  config/
+    birthdayConfig.ts
+    memories.ts
+
+  assets/
+    photos/
+    music/
+    illustrations/
+
+  utils/
+    birthdayDate.ts
+
+  App.tsx
+  main.tsx
+```
+
+### Architecture
+
+- Use reusable React components.
+- Keep birthday content in configuration files.
+- Use React state to manage screen transitions and gift interactions.
+- Avoid unnecessary backend infrastructure.
+- Do not require authentication or a database.
+- Ensure every gift can be revisited.
+- Keep date logic separate from visual components.
+- Use optimized images and lazy loading where appropriate.
+
+## 12. Mobile-First Requirements
+
+The experience must be designed for mobile first.
+
+- Use full-screen or near-full-screen storytelling layouts.
+- Keep all interactive targets comfortably tappable.
+- Avoid horizontal overflow.
+- Make the scrapbook readable without zooming.
+- Adapt the two-page album to a vertical layout on smaller screens.
+- Keep animations smooth on typical mobile devices.
+- Test on common mobile browsers and desktop browsers.
+
+## 13. Accessibility, Privacy, and Performance
+
+- Respect reduced-motion preferences.
+- Ensure buttons have accessible labels.
+- Maintain adequate contrast and readable font sizes.
+- Do not require microphone permissions.
+- Do not collect personal information.
+- Use photographs only when supplied or authorized for use.
+- Avoid unnecessary third-party scripts.
+- Ensure the experience remains usable when music or animations are unavailable.
+- Provide a graceful fallback for failed image loads.
+- Avoid large animation libraries or assets when lightweight alternatives suffice.
+
+## 14. Deployment
+
+Deploy the finished website using Vercel or Netlify.
+
+The final result must have:
+- A working public URL.
+- All assets included in the deployment.
+- No broken images or routes.
+- No requirement to run a local server for the recipient.
+- No requirement to log in.
+- Correct birthday behavior according to the India timezone.
+
+Provide instructions for replacing photographs, editing messages, and changing the birthday configuration.
+
+## 15. Acceptance Criteria
+
+The website is ready when:
+
+1. The welcome invitation works.
+2. YES and NO interactions behave as intended.
+3. The countdown displays the correct remaining time.
+4. Birthday mode activates automatically on 30 October 2026 at midnight IST.
+5. The gift-selection screen displays three working gift choices.
+6. The envelope reveals the personal letter.
+7. The diamond opens the interactive scrapbook.
+8. The present opens the final surprise.
+9. The user can navigate between gifts and revisit them.
+10. The birthday cake interaction works if implemented.
+11. The website is mobile-responsive and visually consistent.
+12. All personal content is easy to edit.
+13. The website remains accessible after the birthday.
+14. The deployed URL works without authentication.
+15. The complete experience has been tested before and after the birthday date.
+
+## 16. Final Instructions for the AI Developer
+
+Build a complete, polished, production-ready birthday website based on this PRD and the supplied screen recording.
+
+Do not create a generic landing page with a few birthday cards. Build a connected, interactive journey with a clear visual identity, meaningful choices, smooth transitions, personal memories, a heartfelt letter, and a final surprise.
+
+Prioritize:
+1. Visual fidelity to the blue-and-white scrapbook aesthetic.
+2. Excellent mobile usability.
+3. Meaningful interactions and working navigation.
+4. Smooth, tasteful animations.
+5. Easy customization of personal content.
+6. Accurate birthday countdown and automatic date-based behavior.
+7. Fast loading and reliable deployment.
+
+Use beautiful placeholder content during development, but keep all names, photographs, captions, and messages easy to replace.
+
+Complete the entire website, test all interactions, verify the date transitions using simulated dates, and provide deployment instructions.
+
+**The final result should feel like a little digital world created with love, exclusively for my sister.**

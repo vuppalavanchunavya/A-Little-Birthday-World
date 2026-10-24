@@ -1,0 +1,28 @@
+kind = "web"
+previewPath = "/little-birthday-world/"
+title = "A Little Birthday World"
+description = "A personalized, mobile-first birthday surprise for a sister, with an India-time countdown, interactive gift choices, an editable letter, a scrapbook gallery, and a final reveal."
+version = "1.0.0"
+id = "artifacts/little-birthday-world"
+router = "path"
+
+[[services]]
+name = "web"
+paths = [ "/little-birthday-world/" ]
+localPort = 22693
+
+[services.development]
+run = "pnpm --filter @workspace/little-birthday-world run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/little-birthday-world", "run", "build" ]
+serve = "static"
+publicDir = "artifacts/little-birthday-world/dist/public"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "22693"
+BASE_PATH = "/little-birthday-world/"
